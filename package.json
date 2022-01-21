@@ -1,17 +1,35 @@
 {
   "name": "socsapp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple CLI for managing the SOCS Assignments",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/index.js"
+    "start": "node ./bin/index.js",
+    "update": "npm i -g ."
   },
   "author": "Christian Harjuno (SorataBaka)",
   "license": "ISC",
   "bin": {
-    "socs": "./bin/index.js"
+    "socs": "bin/index.js"
   },
   "dependencies": {
     "fs": "^0.0.1-security"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SorataBaka/SOCS-App.git"
+  },
+  "keywords": [
+    "nodejs",
+    "cli",
+    "binus",
+    "javascript",
+    "sunib",
+    "socs"
+  ],
+  "bugs": {
+    "url": "https://github.com/SorataBaka/SOCS-App/issues"
+  },
+  "homepage": "https://github.com/SorataBaka/SOCS-App#readme"
 }
