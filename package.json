@@ -1,0 +1,17 @@
+{
+  "name": "socsapp",
+  "version": "1.0.0",
+  "description": "Simple CLI for managing the SOCS Assignments",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/index.js"
+  },
+  "author": "Christian Harjuno (SorataBaka)",
+  "license": "ISC",
+  "bin": {
+    "socs": "./bin/index.js"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}
