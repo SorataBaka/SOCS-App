@@ -5,19 +5,20 @@ const execpath = process.cwd();
 
 const initialize = (type, number, withTemplate) => {
   const assignmentType = type.toUpperCase() == "OLQ"?"OLQ":type.toUpperCase() == "ASG"?"ASG":"QUIZ";
-  fs.mkdirSync(`${execpath}/SOCS1 - ${assignmentType}${number}`);
-
+  if(!fs.existsSync(`${execpath}/SOCS1 - ${assignmentType}${number}`)) fs.mkdirSync(`${execpath}/SOCS1 - ${assignmentType}${number}`)
+  
+  console.log(__dirname)
   if(withTemplate) {
-    fs.cpSync(`./templates/testcasetemplate.c`, `${execpath}/SOCS1 - ${assignmentType}${number}/A.c`);
+    fs.cpSync(__dirname + `/templates/testcasetemplate.c`, `${execpath}/SOCS1 - ${assignmentType}${number}/A.c`);
   }else{
-    fs.cpSync(`./templates/emptytemplate.c`, `${execpath}/SOCS1 - ${assignmentType}${number}/A.c`);
+    fs.cpSync(__dirname + `/templates/emptytemplate.c`, `${execpath}/SOCS1 - ${assignmentType}${number}/A.c`);
   }
 }
 const generateWithTemplate = (problemtype) => {
-  fs.cpSync(`./templates/testcasetemplate.c`, `${execpath}/${problemtype.toUpperCase()}.c`);
+  fs.cpSync(__dirname + `/templates/testcasetemplate.c`, `${execpath}/${problemtype.toUpperCase()}.c`);
 }
 const generateWithoutTemplate = (problemtype) => {
-  fs.cpSync(`./templates/emptytemplate.c`, `${execpath}/${problemtype.toUpperCase()}.c`);
+  fs.cpSync(__dirname + `/templates/emptytemplate.c`, `${execpath}/${problemtype.toUpperCase()}.c`);
 }
 
 const argv = process.argv;
@@ -51,7 +52,7 @@ if(argv[2] == "--init" || argv[2] == "init"){
   const withTemplate = argv[5];
   if(type == undefined || number == undefined) return console.log("Please provide an SOCS type and Version \n Example: \n socs init OLQ 1 --template \n socs --init OLQ 1 --no-template");
   if(withTemplate == "--no-template" || withTemplate == undefined) return initialize(type, number, false);
-  if(withTemplate == "--template")return initialize(type, number, true);
+  if(withTemplate == "--template") return initialize(type, number, true);
 }
 if(argv[2] == "--g" || argv[2] == "generate"){
   const problemType = argv[3];
